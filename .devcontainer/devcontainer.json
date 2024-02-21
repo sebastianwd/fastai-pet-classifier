@@ -1,0 +1,43 @@
+{
+  "name": "Python 3",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.jupyter",
+        "matangover.mypy",
+        "charliermarsh.ruff",
+        "twixes.pypi-assistant",
+        "donjayamanne.python-environment-manager"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.fastai/data,target=/root/.fastai/data,type=bind,consistency=cached"
+  ],
+  "runArgs": [
+    "--gpus",
+    "all",
+    //"--ulimit",
+    //"memlock=-1",
+    //"--ulimit",
+    //"stack=67108864",
+    "--shm-size=5gb"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8888]
+}

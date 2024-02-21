@@ -1,0 +1,4 @@
+```bash
+conda create --name pet-classifier python=3.11
+conda install jupyter
+```

@@ -1,0 +1,5 @@
+fastai
+nbdev
+ipywidgets
+timm
+gradio
